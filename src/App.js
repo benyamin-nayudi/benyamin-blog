@@ -1,10 +1,39 @@
+import './index.css'
+import { BrowserRouter as Router , Route , Switch } from 'react-router-dom'
+import Navbar from "./Navbar"
+import Home from './Home'
+import Create from './Create'
+import BlogDetails from './BlogDetails'
+import NotFound from "./NotFound"
 const App =() => {
+  
   return (
-    <div>
-      <h1>hello world</h1>
-      <p>hello world</p>
-    </div>
+    <Router>
+      <div className ="App">
+        <Navbar /> 
+
+        <div className="content">
+        <Switch>
+          <Route path="/" exact >
+            <Home />
+          </Route>
+          
+          <Route path="/create">
+            <Create />
+          </Route>
+          
+          <Route path="/blogs/:id">
+            <BlogDetails />
+          </Route>
+
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+        </div>
+        
+      </div>
+    </Router>
   )
 }
-
 export default App
